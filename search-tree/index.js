@@ -1,4 +1,5 @@
 let ROOT = undefined;
+const display = document.querySelector("#display");
 
 class Node {
     left = null;
