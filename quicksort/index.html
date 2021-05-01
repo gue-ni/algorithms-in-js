@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>quicksort</title>
+    </head>
+    <body>
+        <script>
+            function quicksort(a, L, R) {
+                console.log(`L: ${L}, R: ${R}`);
+                if (R <= L) return;
+                let p = a[L];
+                let l = L;
+                let r = R + 1;
+
+                do {
+                    do {
+                        l += 1;
+                    } while (a[l] < p);
+
+                    do {
+                        r -= 1;
+                    } while (p < a[r]);
+
+                    [a[l], a[r]] = [a[r], a[l]];
+                } while (l < r);
+
+                let tmp = a[r];
+                a[L] = a[l];
+                a[l] = tmp;
+                a[r] = p;
+
+                quicksort(a, L, r - 1);
+                quicksort(a, r + 1, R);
+            }
+
+            debugger;
+            const A = [1, 1, 1, 1];
+            quicksort(A, 0, A.length - 1);
+            console.log(A);
+        </script>
+    </body>
+</html>
