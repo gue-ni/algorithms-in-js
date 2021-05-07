@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function g(n) {
+            return n;
+        }
+        function f(n) {
+            let k = 0;
+
+            for (let i = 1; i <= n; i++) {
+                for (let j = 1; j <= i; j++) {
+                    k = k + j;
+                }
+                for (let j = i + n; j <= 3 * n; j++) {
+                    k = k - j;
+                }
+            }
+
+            return k;
+        }
+    </script>
+    <script>
+        let script = document.getElementsByTagName("script")[0]
+        let pre = document.createElement("pre");
+        pre.append(script.innerText)
+        pre.append(g(10))
+        document.body.append(pre)
+    </script>
+</body>
+
+</html>

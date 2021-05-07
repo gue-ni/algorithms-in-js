@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap</title>
+</head>
+
+<body>
+    <script>
+        class Heap {
+            H = []
+            n = 0;
+
+            heapify_up(i) {
+                if (i > 1) {
+                    let j = Math.floor(i / 2);
+                    if (this.H[i] < this.H[j]) {
+                        // switch
+                        let tmp = this.H[i];
+                        this.H[i] = this.H[j];
+                        this.H[j] = tmp;
+                        this.heapify_up(j);
+                    }
+                }
+
+            }
+
+            insert(i) {
+                debugger;
+                this.n++;
+                this.H[this.n] = i;
+                console.log("before heapify", this.H);
+                this.heapify_up(this.n);
+                console.log("after heapify", this.H);
+            }
+        }
+
+
+        let heap = new Heap();
+        heap.insert(3);
+        heap.insert(2);
+        heap.insert(1);
+        heap.insert(4);
+
+    </script>
+</body>
+
+</html>

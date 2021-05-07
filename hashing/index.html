@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashing</title>
+</head>
+
+<body>
+    <script>
+        const m = 7;
+
+
+        function double_hashing(k, i) {
+            const h1 = (x) => (x % m);
+            const h2 = (x) => ((x % 6) + 1)
+            return (h1(k) + i * h2(k)) % m;
+        }
+
+        const T = [8, 1, 9, 3, -3, 12, 21];
+        const C = [1, 2, 1, 1, 1, 1, 0];
+
+
+
+        function search(k) {
+            let i = 0;
+            do {
+                console.log("loop", i);
+
+                const h = double_hashing(k, i);
+
+                if (T[h] == k) {
+                    return k;
+                }
+
+                i++;
+            } while (i < m);
+
+        }
+
+        function my_search(k) {
+            let j = double_hashing(k, 0);
+
+            let i = 0;
+            do {
+                console.log("loop", i);
+
+                const h = double_hashing(k, i);
+
+                if (T[h] == k) {
+                    return k;
+                }
+
+                i++;
+            } while (i < C[j]);
+        }
+
+        console.log(my_search(29))
+        console.log(search(29))
+
+
+    </script>
+    <script>
+        let script = document.getElementsByTagName("script")[0]
+        let pre = document.createElement("pre");
+        pre.append(script.innerText)
+        document.body.append(pre)
+    </script>
+
+</body>
+
+</html>
