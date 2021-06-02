@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Substring</title>
+</head>
+
+<body>
+    <script>
+        function longest_substring(S, T) {
+
+            let r = S.length, n = T.length;
+
+            L = new Array(r).fill(Array(n).fill(0))
+            L.forEach(el => console.log(el))
+
+            ret = 0;
+
+            for (let i = 0; i < r; i++) {
+                for (let j = 0; j < n; j++) {
+
+                    if (i == 0 || j == 0) {
+                        L[i][j] = 0;
+
+                    } else if (S[i - 1] == T[j - 1]) {
+                        L[i][j] = L[i - 1][j - 1] + 1;
+                        ret = Math.max(ret, L[i][j]);
+
+                    } else {
+                        L[i][j] = 0;
+                    }
+                }
+            }
+
+            return ret;
+
+        }
+
+        const A = "ATCGAT";
+        const B = "AGATGC";
+        console.log(longest_substring(A, B));
+
+
+    </script>
+    <script>
+        let script = document.getElementsByTagName("script")[0]
+        let pre = document.createElement("pre");
+        pre.append(script.innerText)
+        document.body.append(pre)
+    </script>
+
+</body>
+
+</html>
