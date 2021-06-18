@@ -1,7 +1,8 @@
 function all_substrings(S) {
     const n = S.length;
 
-    for (let len = 0; len <= n; len++) {
+    for (let len = 1; len <= n; len++) {
+        console.log(`substrings of length ${len}`);
         for (let i = 0; i <= n - len; i++) {
             const j = i + len;
             console.log(S.substring(i, j));
@@ -39,4 +40,4 @@ const B = "AGATGC";
 
 console.log(longest_substring(A, B));
 
-//all_substrings("abcd");
+all_substrings("abcd");
